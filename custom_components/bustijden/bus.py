@@ -9,17 +9,6 @@ class Bus:
     async def get_next_buses(self):
         # Placeholder method to simulate fetching bus data
         async with aiohttp.ClientSession() as session:
-            async with session.get(f"http://v0.ovapi.nl/stopareacode/{self.stop_id}/") as response:
+            async with session.get("http://gtfsapi.internal.remcokersten.nl:3000/stop-times/stop?date=20251014&ids=3390096,3390097,3430629,3430630,stoparea:526384") as response:
                 data = await response.json()
-                stop = data.get(self.stop_id, {})
-                upcoming_buses = []
-                for location in stop:
-                    passes = stop[location]['Passes']
-                    for buspass in passes:
-                        upcoming_buses.append({
-                            "name": passes[buspass]['LineName'],
-                            "number": passes[buspass]['LinePublicNumber'],
-                            "expected_departure": passes[buspass]['ExpectedDepartureTime'],
-                            "destination": passes[buspass]['DestinationName50']
-                        })
-                return upcoming_buses
+                return data

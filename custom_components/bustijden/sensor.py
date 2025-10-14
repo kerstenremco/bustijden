@@ -57,6 +57,6 @@ class StopSensor(Entity):
     async def async_update(self):
         # Fetch new state data for the sensor
         stops = await self._bus.get_next_buses()
-        self._state = len(stops)
+        self._state = stops[0]['minutesUntil'] if stops else 0
         self._stops = stops
         self._available = True

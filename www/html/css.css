@@ -1,0 +1,77 @@
+.main {
+  width: 300px;
+}
+
+#buscard-header {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+#bus-icon {
+  width: 20px;
+  height: 20px;
+}
+
+#buscard-time-dots {
+  width: 10%;
+  height: 10%;
+}
+
+#buscard-time {
+  display: flex;
+  align-items: center;
+  height: 40px;
+}
+
+.route {
+  display: flex;
+  gap: 5px;
+}
+
+.route-time {
+  width: 40px;
+  font-weight: bolder;
+  text-align: right;
+}
+
+.route-station {
+  flex-grow: 1;
+}
+
+#bus-title {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  flex-grow: 1;
+}
+
+#live-icon {
+  margin-left: -3px;
+}
+
+#bus-timer {
+  color: #2fbd95;
+  font-weight: lighter;
+  white-space: nowrap;
+}
+
+#live-icon g {
+  fill: #2fbd95;
+}
+
+#bus-number {
+  background-color: chocolate;
+  padding: 1px 6px;
+  font-size: smaller;
+  font-weight: bolder;
+}
+
+#buscard {
+  background-color: #f2ebeb;
+  padding: 10px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
