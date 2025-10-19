@@ -13,10 +13,3 @@ sensor:
     stop_name: 'Rembrand van Rijnstraat'
     stop_amount: 8
 ```
-
-- Dashboard add /local/card.js
-
-```
-type: custom:lit-card
-entity: sensor.bus_stop_simba_2
-```
