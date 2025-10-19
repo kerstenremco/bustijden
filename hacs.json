@@ -1,4 +1,7 @@
 {
   "name": "Bustijden",
+  "content_in_root": false,
+  "domains": ["bustijden"],
+  "country": "NL",
   "render_readme": true
 }

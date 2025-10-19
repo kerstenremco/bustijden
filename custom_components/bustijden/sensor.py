@@ -3,7 +3,7 @@ import voluptuous as vol
 from homeassistant.components.sensor import PLATFORM_SCHEMA
 import homeassistant.helpers.config_validation as cv
 from homeassistant.helpers.entity import Entity
-from .const import CONF_STOP_NAME, CONF_STOP_ID
+from .const import CONF_STOP_NAME, CONF_STOP_IDS, CONF_STOP_AMOUNT
 from datetime import timedelta
 from .bus import Bus
 
@@ -11,15 +11,16 @@ _LOGGER = logging.getLogger(__name__)
 SCAN_INTERVAL = timedelta(minutes=1)
 
 PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({
-    vol.Required(CONF_STOP_ID): cv.string,
-    vol.Required(CONF_STOP_NAME): cv.string
+    vol.Required(CONF_STOP_IDS): cv.string,
+    vol.Required(CONF_STOP_NAME): cv.string,
+    vol.Optional(CONF_STOP_AMOUNT, default=5): cv.positive_int,
 })
 
 
 async def async_setup_platform(hass, config, async_add_entities, discovery_info=None):
     # Add sensors here
     sensors = []
-    bus = Bus(config[CONF_STOP_ID], config[CONF_STOP_NAME])
+    bus = Bus(config[CONF_STOP_IDS], config[CONF_STOP_NAME], config[CONF_STOP_AMOUNT])
     sensors.append(StopSensor(bus))
     async_add_entities(sensors, update_before_add=True)
 
@@ -37,8 +38,12 @@ class StopSensor(Entity):
         return f"Bus Stop {self._bus.stop_name}"
 
     @property
+    def stop_ids(self):
+        return self._bus.stop_ids
+
+    @property
     def unique_id(self):
-        return f"bus_stop_{self._bus.stop_id}"
+        return f"bus_stop_{self._bus.stop_ids}"
 
     @property
     def available(self):

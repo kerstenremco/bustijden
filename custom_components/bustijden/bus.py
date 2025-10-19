@@ -1,14 +1,18 @@
 import aiohttp
+import datetime
+from .const import API_URL
 
 
 class Bus:
-    def __init__(self, stop_id, stop_name):
-        self.stop_id = stop_id
+    def __init__(self, stop_ids, stop_name, amount):
+        self.stop_ids = stop_ids
         self.stop_name = stop_name
+        self.amount = amount
 
     async def get_next_buses(self):
-        # Placeholder method to simulate fetching bus data
+        date = datetime.datetime.now().strftime("%Y%m%d")
         async with aiohttp.ClientSession() as session:
-            async with session.get("http://gtfsapi.internal.remcokersten.nl:3000/stop-times/stop?date=20251014&ids=3390096,3390097,3430629,3430630,stoparea:526384") as response:
+            async with session.get(f"{API_URL}/stop-times/stop?date={date}&ids={self.stop_ids}", ssl=False) as response:
                 data = await response.json()
-                return data
+                stopTimes = list(data)[:self.amount]
+                return stopTimes

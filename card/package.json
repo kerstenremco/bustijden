@@ -1,14 +1,13 @@
 {
   "source": "src/index.js",
-  "module": "dist/card.js",
   "targets": {
     "module": {
       "includeNodeModules": true
     }
   },
   "scripts": {
-    "watch": "parcel watch",
-    "build": "parcel build"
+    "watch": "parcel watch --dist-dir ../www/bustijden-card",
+    "build": "parcel build --dist-dir ../www/bustijden-card"
   },
   "devDependencies": {
     "parcel": "^2.15.4"

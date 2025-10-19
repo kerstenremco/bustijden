@@ -7,7 +7,7 @@ services:
       - haconfig:/config:rw
       - /etc/localtime:/etc/localtime:ro
       - ./custom_components:/config/custom_components
-      - ./www/dist:/config/www
+      - ./www:/config/www
     ports:
       - 8123:8123
     environment:
