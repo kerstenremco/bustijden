@@ -16,8 +16,9 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({
 })
 
 
-async def async_setup_platform(hass, config, async_add_entities, discovery_info=None):
+async def async_setup_entry(hass, entry, async_add_entities):
     # Add sensors here
+    config = entry.data
     sensors = []
     bus = Bus(config[CONF_STOP_BASEKEY], config[CONF_STOP_AMOUNT])
     sensors.append(StopSensor(bus))
