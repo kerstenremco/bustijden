@@ -7,7 +7,7 @@ services:
       - haconfig:/config:rw
       - /etc/localtime:/etc/localtime:ro
       - ./custom_components:/config/custom_components
-      - ../bustijden-card/card.js:/config/www/bustijden-card.js
+      - ../bustijden-card/card.js:/config/www/card.js
     ports:
       - 8123:8123
     environment:

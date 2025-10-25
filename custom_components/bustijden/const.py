@@ -1,7 +1,6 @@
 DOMAIN = "bustijden"
 
-CONF_STOP_IDS = "stop_ids"
-CONF_STOP_NAME = "stop_name"
+CONF_STOP_BASEKEY = "stop_basekey"
 CONF_STOP_AMOUNT = "stop_amount"
 
-API_URL = "https://static.161.161.132.142.clients.your-server.de"
+API_URL = "http://api.busvertrektijden.nl"
